@@ -1,24 +1,14 @@
-# README
+# Alodokter Rakamin Fullstack Group 5
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Teammates :**
+<br>
 
-Things you may want to cover:
+1. Bagas
+2. Bella
+3. Isza
+4. Danny
 
-* Ruby version
+**Homeworks**
+<br>
+- Homework docs Final Project 1 : https://drive.google.com/drive/folders/1xkc81JVwYbi60evKiMV79miwn44e50aW?usp=sharing
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
