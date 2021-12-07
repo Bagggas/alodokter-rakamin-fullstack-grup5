@@ -5,7 +5,7 @@
 
 1. Bagas
 2. Bella
-3. Isza
+3. Izsa
 4. Danny
 
 **Homeworks**
