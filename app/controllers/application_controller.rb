@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :null_session
-    before_action :authorized
 
   def encode_token(payload)
     JWT.encode(payload, 'yourSecret')
@@ -26,7 +25,7 @@ class ApplicationController < ActionController::Base
   def logged_in_user
     if decoded_token
       user_id = decoded_token[0]['user_id']
-      @users = Pasien.find_by(id: user_id)
+      @user = Pasien.find_by(id: user_id)
     end
   end
 

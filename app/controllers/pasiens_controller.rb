@@ -1,5 +1,5 @@
 class PasiensController < ApplicationController
-    before_action :authorized, only: [:auto_login]
+    before_action :authorized, only: [:auto_login, :update]
 
   # REGISTER
   def create
@@ -24,6 +24,19 @@ class PasiensController < ApplicationController
     end
   end
 
+  #UPDATE PROFILE
+  def update
+    @user = Pasien.find(params[:id])
+
+    @user.update(update_params)
+
+    if @user.valid?
+      render json: {user: @user}, status: :ok
+    else
+      render json: {error: "Can't update. Try Again"}
+    end
+  end
+
 
   def auto_login
     render json: @user
@@ -33,5 +46,9 @@ class PasiensController < ApplicationController
 
   def user_params
     params.permit(:nama_depan, :nama_belakang, :email, :password, :umur, :jenis_kelamin, :no_hp, :foto)
+  end
+
+  def update_params
+    params.permit(:id, :nama_depan, :nama_belakang, :email, :password, :umur, :jenis_kelamin, :no_hp, :foto)
   end
 end
