@@ -23,7 +23,11 @@ default: &default
 
 development:
   <<: *default
-  database: blogs_development
+  database: db_janjidokter
+  username: bella
+  password: bella
+  host: localhost
+  post: 5432
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +61,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: blogs_test
+  database: db_janjidokter
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +85,4 @@ test:
 #
 production:
   <<: *default
-  database: blogs_production
-  username: blogs
-  password: <%= ENV['BLOGS_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DBURI'] %>

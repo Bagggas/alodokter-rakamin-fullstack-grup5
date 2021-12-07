@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resource :pasiens, only: [:create]
+  post "/login", to: "pasiens#login"
+  get "/auto_login", to: "pasiens#auto_login"
 end
