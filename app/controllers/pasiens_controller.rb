@@ -1,14 +1,21 @@
 class PasiensController < ApplicationController
     before_action :authorized, only: [:auto_login, :update]
 
+  def show
+    pasiens = Pasien.all
+    render json: pasiens, status: :ok
+  end
+
   # REGISTER
   def create
     @user = Pasien.create(user_params)
     if @user.valid?
-      token = encode_token({user_id: @user.id})
-      render json: {user: @user, token: token}
+      token = encode_token({ user_id: @user.id })
+      render json: { user: @user, token: token }
     else
-      render json: {error: "Invalid email or password"}
+      render json: {
+        error: 'Email or Password is Invalid'
+      }, status: :bad_request
     end
   end
 
@@ -17,10 +24,12 @@ class PasiensController < ApplicationController
     @user = Pasien.find_by(email: params[:email])
 
     if @user && @user.authenticate(params[:password])
-      token = encode_token({user_id: @user.id})
-      render json: {user: @user, token: token}
+      token = encode_token({ user_id: @user.id })
+      render json: { user: @user, token: token }
     else
-      render json: {error: "Invalid email or password"}
+      render json: {
+        error: 'Email or Password is Invalid'
+      }, status: :bad_request
     end
   end
 
