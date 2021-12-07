@@ -18,3 +18,19 @@ users = Pasien.create([
     {
         nama_depan: "danny", nama_belakang: "nny", email: "danny@gmail.com",  password: "peanut", umur: 21, jenis_kelamin: "L", no_hp: "086785432467", foto: "danny/url"
     }])
+
+
+dokters = Dokter.create([
+    {
+        nama_dokter:"danny",
+        spesialis:"jantung",
+        harga:1000,
+        jumlah_pasien:30,
+        jumlah_experience:3,
+        rating:10,
+        about_dokter:"anaknya rajin",
+        lokasi:"jerman",
+        edukasi:"MIT"
+
+    }
+])

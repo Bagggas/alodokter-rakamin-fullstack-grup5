@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_045519) do
+ActiveRecord::Schema.define(version: 2021_12_07_174920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dokters", force: :cascade do |t|
+    t.string "nama_dokter"
+    t.string "spesialis"
+    t.integer "harga"
+    t.integer "jumlah_pasien"
+    t.string "jumlah_experience"
+    t.integer "rating"
+    t.string "about_dokter"
+    t.string "lokasi"
+    t.string "edukasi"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "pasiens", force: :cascade do |t|
     t.string "nama_depan"
