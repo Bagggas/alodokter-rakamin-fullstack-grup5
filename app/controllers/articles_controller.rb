@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :authorized, only: [:auto_login]
+  before_action :authorized, except: %i[index show]
 
   def index
     articles = Article.all
