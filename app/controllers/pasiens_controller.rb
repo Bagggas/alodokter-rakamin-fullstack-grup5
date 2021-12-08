@@ -8,14 +8,18 @@ class PasiensController < ApplicationController
 
   # REGISTER
   def create
-    @user = Pasien.create(user_params)
-    if @user.valid?
-      token = encode_token({ user_id: @user.id })
-      render json: { user: @user, token: token }
-    else
-      render json: {
-        error: 'Email or Password is Invalid'
-      }, status: :bad_request
+    unless existing_user
+
+      @user = Pasien.create(user_params)
+      if @user.valid?
+        token = encode_token({ user_id: @user.id })
+        render json: { user: @user, token: token }
+      else
+        render json: {
+          error: 'Email or Password is Invalid'
+        }, status: :bad_request
+      end
+
     end
   end
 
@@ -36,7 +40,7 @@ class PasiensController < ApplicationController
   #UPDATE PROFILE
   def update
     @user = Pasien.find(params[:id])
-
+    
     @user.update(update_params)
 
     if @user.valid?
@@ -46,6 +50,34 @@ class PasiensController < ApplicationController
     end
   end
 
+  #CHECK IF USER EXIST OR NOT
+  def existing_user
+    @user = Pasien.find_by(email: params[:email])
+
+    if @user
+      render json: { message: "Email already used for another account." }
+    else 
+      check_phone_number
+    end
+  end
+
+  #CHECK IF PHONE NUMBER HAS BEEN USED
+  def check_phone_number
+    @user = Pasien.find_by(no_hp: params[:no_hp])
+
+    if @user
+      render json: { message: "Phone number has been used in another account. Please try another number" }
+    else
+      check_password_match
+    end
+  end
+
+  #CHECK IF PASSWORD MATCH WITH CONFIRM PASSWORD
+  def check_password_match
+    unless params[:password] == params[:confirm_password]
+      render json: { message: "Password didn't match" }
+    end
+  end
 
   def auto_login
     render json: @user
