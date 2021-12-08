@@ -24,10 +24,6 @@ default: &default
 development:
   <<: *default
   database: db_janjidokter
-  username: bella
-  password: bella
-  host: localhost
-  post: 5432
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

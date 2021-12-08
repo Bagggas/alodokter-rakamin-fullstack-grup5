@@ -1,15 +1,25 @@
 class PasiensController < ApplicationController
-    before_action :authorized, only: [:auto_login]
+  before_action :authorized, only: %i[auto_login update]
+
+  def show
+    pasiens = Pasien.all
+    render json: pasiens, status: :ok
+  end
 
   # REGISTER
   def create
-    @user = Pasien.create(user_params)
+    # unless existing_user
+
+    @user = Pasien.new(user_params)
+
     if @user.valid?
-      token = encode_token({user_id: @user.id})
-      render json: {user: @user, token: token}
+      @user.save
+      token = encode_token({ user_id: @user.id })
+      render json: { user: @user, token: token }
     else
-      render json: {error: "Invalid email or password"}
+      render json: { message: 'Failed to register new user', errors: @user.errors }, status: 406
     end
+    # end
   end
 
   # LOGGING IN
@@ -17,13 +27,27 @@ class PasiensController < ApplicationController
     @user = Pasien.find_by(email: params[:email])
 
     if @user && @user.authenticate(params[:password])
-      token = encode_token({user_id: @user.id})
-      render json: {user: @user, token: token}
+      token = encode_token({ user_id: @user.id })
+      render json: { user: @user, token: token }
     else
-      render json: {error: "Invalid email or password"}
+      render json: {
+        error: 'Email or Password is Invalid'
+      }, status: :bad_request
     end
   end
 
+  # UPDATE PROFILE
+  def update
+    @user = Pasien.find(params[:id])
+
+    @user.update(update_params)
+
+    if @user.valid?
+      render json: { user: @user }, status: :ok
+    else
+      render json: { message: 'Failed to update', errors: @user.errors }, status: 406
+    end
+  end
 
   def auto_login
     render json: @user
@@ -32,6 +56,12 @@ class PasiensController < ApplicationController
   private
 
   def user_params
-    params.permit(:nama_depan, :nama_belakang, :email, :password, :umur, :jenis_kelamin, :no_hp, :foto)
+    params.permit(:nama_depan, :nama_belakang, :email, :password, :umur, :jenis_kelamin, :no_hp, :foto,
+                  :password_confirmation)
+  end
+
+  def update_params
+    params.permit(:id, :nama_depan, :nama_belakang, :email, :password, :umur, :jenis_kelamin, :no_hp, :foto,
+                  :password_confirmation)
   end
 end
