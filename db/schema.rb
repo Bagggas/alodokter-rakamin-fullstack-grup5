@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(version: 2021_12_07_141008) do
   end
 
   create_table "pasiens", force: :cascade do |t|
-    t.string "nama_depan"
-    t.string "nama_belakang"
+    t.string "nama"
+    t.string "kabupaten_kota"
+    t.date "tanggal_lahir"
     t.string "email"
     t.string "password_digest"
     t.integer "umur"

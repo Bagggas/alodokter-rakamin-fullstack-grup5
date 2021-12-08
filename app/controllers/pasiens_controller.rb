@@ -15,7 +15,11 @@ class PasiensController < ApplicationController
     if @user.valid?
       @user.save
       token = encode_token({ user_id: @user.id })
-      render json: { user: @user, token: token }
+      render json: { user:{
+        id: @user.id,
+        email: @user.email,
+        password: @user.password,
+      }, token: token }
     else
       render json: { message: 'Failed to register new user', errors: @user.errors }, status: 406
     end
@@ -56,12 +60,12 @@ class PasiensController < ApplicationController
   private
 
   def user_params
-    params.permit(:nama_depan, :nama_belakang, :email, :password, :umur, :jenis_kelamin, :no_hp, :foto,
+    params.permit(:nama, :email, :password,
                   :password_confirmation)
   end
 
   def update_params
-    params.permit(:id, :nama_depan, :nama_belakang, :email, :password, :umur, :jenis_kelamin, :no_hp, :foto,
-                  :password_confirmation)
+    params.permit(:id, :nama, :email, :password, :umur, :jenis_kelamin, :no_hp, :foto,
+                  :password_confirmation, :tanggal_lahir, :kabupaten_kota)
   end
 end
