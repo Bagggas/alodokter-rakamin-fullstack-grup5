@@ -1,6 +1,11 @@
 class PasiensController < ApplicationController
   before_action :authorized, only: %i[auto_login update]
 
+  def index
+    pasiens = Pasien.all
+    render json: pasiens, status: :ok
+  end
+
   def show
     pasiens = Pasien.all
     render json: pasiens, status: :ok
