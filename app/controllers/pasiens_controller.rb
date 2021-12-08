@@ -49,33 +49,6 @@ class PasiensController < ApplicationController
     end
   end
 
-  # # CHECK IF USER EXIST OR NOT
-  # def existing_user
-  #   @user = Pasien.find_by(email: params[:email])
-
-  #   if @user
-  #     render json: { message: 'Email already used for another account.' }
-  #   else
-  #     check_phone_number
-  #   end
-  # end
-
-  # # CHECK IF PHONE NUMBER HAS BEEN USED
-  # def check_phone_number
-  #   @user = Pasien.find_by(no_hp: params[:no_hp])
-
-  #   if @user
-  #     render json: { message: 'Phone number has been used in another account. Please try another number' }
-  #   else
-  #     check_password_match
-  #   end
-  # end
-
-  # # CHECK IF PASSWORD MATCH WITH CONFIRM PASSWORD
-  # def check_password_match
-  #   render json: { message: "Password didn't match" } unless params[:password] == params[:confirm_password]
-  # end
-
   def auto_login
     render json: @user
   end
