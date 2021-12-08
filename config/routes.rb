@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'pasiens#index'
   # test
   get '/show', to: 'pasiens#show'
 
