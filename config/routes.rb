@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   # articles
   get '/article', to: 'articles#index'
   get '/article/detail/:id', to: 'articles#show'
+  # article search
+  get '/article/search/:search', to: 'articles#search'
 end
