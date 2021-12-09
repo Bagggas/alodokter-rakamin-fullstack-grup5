@@ -21,9 +21,33 @@ users = Pasien.create([
 
 articles = Article.create([
                             {
-                              judul: 'danny',
-                              konten: 'nny',
-                              penulis: 'danny@gmail.com',
-                              foto: 'danny/url'
+                              judul: 'artikel 01',
+                              konten: 'konten 01',
+                              penulis: 'author 01',
+                              foto: 'author01/url'
+                            },
+                            {
+                              judul: 'artikel 02',
+                              konten: 'konten 02',
+                              penulis: 'author 02',
+                              foto: 'author02/url'
+                            },
+                            {
+                              judul: 'artikel 03',
+                              konten: 'konten 03',
+                              penulis: 'author 03',
+                              foto: 'author03/url'
+                            },
+                            {
+                              judul: 'artikel 04',
+                              konten: 'konten 04',
+                              penulis: 'author 04',
+                              foto: 'author04/url'
+                            },
+                            {
+                              judul: 'artikel 05',
+                              konten: 'konten 05',
+                              penulis: 'author 05',
+                              foto: 'author05/url'
                             }
                           ])
