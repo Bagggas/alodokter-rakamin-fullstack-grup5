@@ -11,4 +11,11 @@ Rails.application.routes.draw do
   # articles
   get '/article', to: 'articles#index'
   get '/article/detail/:id', to: 'articles#show'
+
+  # detaildokter
+  get "/detaildokter", to:"detaildokters#show"
+
+  # listdokter
+  get "/listdokter", to:"listdokters#show"
+
 end

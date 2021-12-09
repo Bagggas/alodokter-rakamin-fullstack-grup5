@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_141008) do
+ActiveRecord::Schema.define(version: 2021_12_09_182246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,29 @@ ActiveRecord::Schema.define(version: 2021_12_07_141008) do
     t.text "konten"
     t.text "penulis"
     t.string "foto"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "detaildokters", force: :cascade do |t|
+    t.string "nama_dokter"
+    t.string "spesialis"
+    t.integer "harga"
+    t.integer "jumlah_pasien"
+    t.string "jumlah_experience"
+    t.integer "rating"
+    t.string "about_dokter"
+    t.string "lokasi"
+    t.string "edukasi"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "listdokters", force: :cascade do |t|
+    t.string "nama_dokter"
+    t.string "spesialis"
+    t.string "lokasi"
+    t.integer "harga"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

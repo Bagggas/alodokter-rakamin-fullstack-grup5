@@ -1,0 +1,2 @@
+class Detaildokter < ApplicationRecord
+end
