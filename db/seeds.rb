@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-users = Pasien.create([
+Pasien.create([
                         {
                           nama: 'bella',
                           kabupaten_kota: 'jakarta',
@@ -19,7 +19,7 @@ users = Pasien.create([
                         },
                       ])
 
-articles = Article.create([
+Article.create([
                             {
                               judul: 'artikel 01',
                               konten: 'konten 01',
@@ -51,3 +51,58 @@ articles = Article.create([
                               foto: 'author05/url'
                             }
                           ])
+
+Doctor.create([
+  {
+    nama: 'Lamoli',
+    about: 'Mollit occaecat dolor non amet nulla consequat ea culpa.',
+    spesialis: 'Bidan',
+    harga_konsul: 1000000,
+    rating: 10,
+    jumlah_pasien: 100,
+    jumlah_pengalaman: 17,
+    lokasi: 'solo',
+    edukasi: 'pendidikan',
+    fakultas: 'teknik',
+    jurusan: 'Laws',
+  },
+  {
+    nama: 'Lamoli',
+    about: 'Mollit occaecat dolor non amet nulla consequat ea culpa.',
+    spesialis: 'Bidan',
+    harga_konsul: 1000000,
+    rating: 10,
+    jumlah_pasien: 100,
+    jumlah_pengalaman: 17,
+    lokasi: 'solo',
+    edukasi: 'pendidikan',
+    fakultas: 'teknik',
+    jurusan: 'Laws',
+  },
+  {
+    nama: 'sulis',
+    about: 'Mollit occaecat dolor non amet nulla consequat ea culpa.',
+    spesialis: 'peranakan',
+    harga_konsul: 1000000,
+    rating: 10,
+    jumlah_pasien: 100,
+    jumlah_pengalaman: 17,
+    lokasi: 'solo',
+    edukasi: 'pendidikan',
+    fakultas: 'teknik',
+    jurusan: 'Laws',
+  },
+  {
+    nama: 'loro',
+    about: 'Mollit occaecat dolor non amet nulla consequat ea culpa.',
+    spesialis: 'tht',
+    harga_konsul: 1000000,
+    rating: 10,
+    jumlah_pasien: 100,
+    jumlah_pengalaman: 17,
+    lokasi: 'solo',
+    edukasi: 'pendidikan',
+    fakultas: 'teknik',
+    jurusan: 'Laws',
+  },
+])
