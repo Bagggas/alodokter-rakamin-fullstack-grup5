@@ -40,6 +40,21 @@ class PasiensController < ApplicationController
     end
   end
 
+  #SHOW PROFILE
+  def showprofile
+    @user = Pasien.find(params[:id])
+    render json: { user: {
+      id: @user.id,
+      nama: @user.nama,
+      email: @user.email,
+      foto: @user.foto
+    },}
+  rescue ActiveRecord::RecordNotFound => e
+    render json: {
+      message: e
+    }, status: :not_found
+  end
+
   # UPDATE PROFILE
   def update
     @user = Pasien.find(params[:id])
