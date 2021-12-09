@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :authorized, except: %i[index show]
+  before_action :authorized, except: %i[index show search]
 
   def index
     articles = Article.page(params[:page]).per(params[:per_page])
@@ -30,10 +30,21 @@ class ArticlesController < ApplicationController
   def show
     articles = Article.find(params[:id])
     render json: articles, status: :ok
-  rescue ActiveRecord::RecordNotFound => e
-    render json: {
-      message: e
-    }, status: :not_found
+
+    rescue ActiveRecord::RecordNotFound => e
+      render json: {
+        message: e
+      }, status: :not_found
+  end
+  
+  def search
+    articles = Article.where('judul ILIKE :search OR konten ILIKE :search OR penulis ILIKE :search', search: "%#{params[:search]}%")
+    render json: articles, status: :ok
+    
+    rescue ActiveRecord::RecordNotFound => e
+      render json: {
+        message: e
+      }, status: :not_found
   end
 
   private
@@ -41,4 +52,5 @@ class ArticlesController < ApplicationController
   def create_params
     params.permit(:judul, :konten, :penulis, :foto)
   end
+
 end

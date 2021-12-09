@@ -37,10 +37,7 @@ class PasiensController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       token = encode_token({ user_id: @user.id })
-      session[:current_user_id] = @user.id
-      
-      render json: { user: @user, token: token,  
-        session_id: session[:current_user_id]}
+      render json: { user: @user, token: token}
     else
       render json: {
         error: 'Email or Password is Invalid'
