@@ -1,0 +1,2 @@
+class Listdokter < ApplicationRecord
+end

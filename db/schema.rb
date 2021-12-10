@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_141008) do
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2021_12_09_182246) do
+=======
+ActiveRecord::Schema.define(version: 2021_12_10_042200) do
+>>>>>>> ecb0106e90c47669852edd1722db0ea8bddbe34f
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,9 +28,48 @@ ActiveRecord::Schema.define(version: 2021_12_07_141008) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+<<<<<<< HEAD
+  create_table "detaildokters", force: :cascade do |t|
+    t.string "nama_dokter"
+    t.string "spesialis"
+    t.integer "harga"
+    t.integer "jumlah_pasien"
+    t.string "jumlah_experience"
+    t.integer "rating"
+    t.string "about_dokter"
+    t.string "lokasi"
+    t.string "edukasi"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "listdokters", force: :cascade do |t|
+    t.string "nama_dokter"
+    t.string "spesialis"
+    t.string "lokasi"
+    t.integer "harga"
+=======
+  create_table "doctors", force: :cascade do |t|
+    t.string "nama"
+    t.text "about"
+    t.string "spesialis"
+    t.integer "harga_konsul"
+    t.integer "rating"
+    t.integer "jumlah_pasien"
+    t.integer "jumlah_pengalaman"
+    t.string "lokasi"
+    t.string "edukasi"
+    t.string "fakultas"
+    t.string "jurusan"
+>>>>>>> ecb0106e90c47669852edd1722db0ea8bddbe34f
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "pasiens", force: :cascade do |t|
-    t.string "nama_depan"
-    t.string "nama_belakang"
+    t.string "nama"
+    t.string "kabupaten_kota"
+    t.date "tanggal_lahir"
     t.string "email"
     t.string "password_digest"
     t.integer "umur"
@@ -35,6 +78,8 @@ ActiveRecord::Schema.define(version: 2021_12_07_141008) do
     t.string "foto"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
   end
 
 end
