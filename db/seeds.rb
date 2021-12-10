@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-users = Pasien.create([
+Pasien.create([
                         {
                           nama: 'bella',
                           kabupaten_kota: 'jakarta',
@@ -19,15 +19,40 @@ users = Pasien.create([
                         },
                       ])
 
-articles = Article.create([
+Article.create([
                             {
-                              judul: 'danny',
-                              konten: 'nny',
-                              penulis: 'danny@gmail.com',
-                              foto: 'danny/url'
+                              judul: 'artikel 01',
+                              konten: 'konten 01',
+                              penulis: 'author 01',
+                              foto: 'author01/url'
+                            },
+                            {
+                              judul: 'artikel 02',
+                              konten: 'konten 02',
+                              penulis: 'author 02',
+                              foto: 'author02/url'
+                            },
+                            {
+                              judul: 'artikel 03',
+                              konten: 'konten 03',
+                              penulis: 'author 03',
+                              foto: 'author03/url'
+                            },
+                            {
+                              judul: 'artikel 04',
+                              konten: 'konten 04',
+                              penulis: 'author 04',
+                              foto: 'author04/url'
+                            },
+                            {
+                              judul: 'artikel 05',
+                              konten: 'konten 05',
+                              penulis: 'author 05',
+                              foto: 'author05/url'
                             }
                           ])
 
+<<<<<<< HEAD
 detaildokters = Detaildokter.create([
   {
       nama_dokter:"danny",
@@ -105,4 +130,59 @@ listdokters = Listdokter.create ([
     harga:1000,
   }
 
+=======
+Doctor.create([
+  {
+    nama: 'Lamoli',
+    about: 'Mollit occaecat dolor non amet nulla consequat ea culpa.',
+    spesialis: 'Bidan',
+    harga_konsul: 1000000,
+    rating: 10,
+    jumlah_pasien: 100,
+    jumlah_pengalaman: 17,
+    lokasi: 'solo',
+    edukasi: 'pendidikan',
+    fakultas: 'teknik',
+    jurusan: 'Laws',
+  },
+  {
+    nama: 'Lamoli',
+    about: 'Mollit occaecat dolor non amet nulla consequat ea culpa.',
+    spesialis: 'Bidan',
+    harga_konsul: 1000000,
+    rating: 10,
+    jumlah_pasien: 100,
+    jumlah_pengalaman: 17,
+    lokasi: 'solo',
+    edukasi: 'pendidikan',
+    fakultas: 'teknik',
+    jurusan: 'Laws',
+  },
+  {
+    nama: 'sulis',
+    about: 'Mollit occaecat dolor non amet nulla consequat ea culpa.',
+    spesialis: 'peranakan',
+    harga_konsul: 1000000,
+    rating: 10,
+    jumlah_pasien: 100,
+    jumlah_pengalaman: 17,
+    lokasi: 'solo',
+    edukasi: 'pendidikan',
+    fakultas: 'teknik',
+    jurusan: 'Laws',
+  },
+  {
+    nama: 'loro',
+    about: 'Mollit occaecat dolor non amet nulla consequat ea culpa.',
+    spesialis: 'tht',
+    harga_konsul: 1000000,
+    rating: 10,
+    jumlah_pasien: 100,
+    jumlah_pengalaman: 17,
+    lokasi: 'solo',
+    edukasi: 'pendidikan',
+    fakultas: 'teknik',
+    jurusan: 'Laws',
+  },
+>>>>>>> ecb0106e90c47669852edd1722db0ea8bddbe34f
 ])

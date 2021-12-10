@@ -1,6 +1,11 @@
 class PasiensController < ApplicationController
   before_action :authorized, only: %i[auto_login update]
 
+  def index
+    pasiens = Pasien.all
+    render json: pasiens, status: :ok
+  end
+
   def show
     pasiens = Pasien.all
     render json: pasiens, status: :ok
@@ -18,7 +23,7 @@ class PasiensController < ApplicationController
       render json: { user:{
         id: @user.id,
         email: @user.email,
-        password: @user.password,
+        password: @user.password
       }, token: token }
     else
       render json: { message: 'Failed to register new user', errors: @user.errors }, status: 406
@@ -32,7 +37,7 @@ class PasiensController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       token = encode_token({ user_id: @user.id })
-      render json: { user: @user, token: token }
+      render json: { user: @user, token: token}
     else
       render json: {
         error: 'Email or Password is Invalid'
