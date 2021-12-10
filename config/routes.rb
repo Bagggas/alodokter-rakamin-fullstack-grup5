@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   post '/login', to: 'pasiens#login'
   get '/auto_login', to: 'pasiens#auto_login'
 
+  # password
+  post 'password/forgot', to: 'passwords#forgot'
+  post 'password/reset', to: 'passwords#reset'
+
   # articles
   get '/article', to: 'articles#index'
   post '/article/new', to: 'articles#create'
