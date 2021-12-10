@@ -1,2 +1,0 @@
-class Listdokter < ApplicationRecord
-end

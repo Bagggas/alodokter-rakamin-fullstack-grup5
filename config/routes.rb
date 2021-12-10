@@ -17,14 +17,7 @@ Rails.application.routes.draw do
   get '/article', to: 'articles#index'
   post '/article/new', to: 'articles#create'
   get '/article/detail/:id', to: 'articles#show'
-<<<<<<< HEAD
-
-  # detaildokter
-  get "/detaildokter", to:"detaildokters#show"
-
-  # listdokter
-  get "/listdokter", to:"listdokters#show"
-=======
+  
   # article search
   get '/article/search/:search', to: 'articles#search'
 
@@ -32,6 +25,5 @@ Rails.application.routes.draw do
   get "/doctor", to: "doctors#index"
   get "/doctor/detail/:id", to: "doctors#show"
   get "/doctor/search/:search", to: "doctors#search"
->>>>>>> ecb0106e90c47669852edd1722db0ea8bddbe34f
 
 end
