@@ -7,8 +7,8 @@ class PasiensController < ApplicationController
   end
 
   def show
-    pasiens = Pasien.all
-    render json: pasiens, status: :ok
+    pasien = Pasien.find(params[:id])
+    render json: pasien, status: :ok
   end
 
   # REGISTER

@@ -5,13 +5,15 @@ Rails.application.routes.draw do
   # pasien routes
   post '/pasien/register', to: 'pasiens#create'
   put '/pasien/update/:id', to: 'pasiens#update'
+  get "/pasien/detail/:id", to: "pasiens#show"
+
   post '/login', to: 'pasiens#login'
   get '/auto_login', to: 'pasiens#auto_login'
 
   # password
-  post 'password/forgot', to: 'passwords#forgot'
-  get 'password/reset', to: 'passwords#index'
-  post 'password/reset', to: 'passwords#reset'
+  post '/password/forgot', to: 'passwords#forgot'
+  get '/password/reset', to: 'passwords#index'
+  post '/password/reset', to: 'passwords#reset'
 
   # articles
   get '/article', to: 'articles#index'
