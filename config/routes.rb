@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # test
-  get '/show', to: 'pasiens#show'
+  get '/show', to: 'pasiens#index'
 
   # pasien routes
   post '/pasien/register', to: 'pasiens#create'
