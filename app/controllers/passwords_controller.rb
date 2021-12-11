@@ -1,6 +1,6 @@
 class PasswordsController < ApplicationController
 
-    def index(token)
+    def index
       token = params[:token]
       user = Pasien.find_by(reset_password_token: token)
       render json: {status: 'ok', data: user}, status: :ok
