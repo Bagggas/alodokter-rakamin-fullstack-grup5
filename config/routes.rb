@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   # password
   post 'password/forgot', to: 'passwords#forgot'
-  get 'password/reset', to: 'passwords#reset'
+  get 'password/reset', to: 'passwords#index'
   post 'password/reset', to: 'passwords#reset'
 
   # articles
@@ -25,7 +25,5 @@ Rails.application.routes.draw do
   get "/doctor", to: "doctors#index"
   get "/doctor/detail/:id", to: "doctors#show"
   get "/doctor/search/:search", to: "doctors#search"
-
-
 
 end
