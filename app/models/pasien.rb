@@ -12,6 +12,8 @@ class Pasien < ApplicationRecord
   validates_format_of :foto, with: URI::DEFAULT_PARSER.make_regexp(%w[http https]), on: :update
   
   validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP
+
+  has_many :schedule
   
   # password reset
   
