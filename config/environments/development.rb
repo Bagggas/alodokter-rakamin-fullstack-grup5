@@ -6,13 +6,13 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => ENV['address'],
-    :port => ENV['port'],
-    :domain => ENV['domain'],
-    :user_name => ENV['user_name'],
-    :password => ENV['password'],
-    :authentication => ENV['authentication'],
-    :enable_starttls_auto => ENV['enable_starttls_auto']
+    address: ENV["MAILER_SMTP_SERVER"],
+    port: 587,
+    domain: "alodokter.com",
+    user_name: ENV["MAILER_USER_NAME"],
+    password: ENV["MAILER_PASSWORD"],
+    authentication: "plain",
+    enable_starttls_auto: true,
   }
 
 
