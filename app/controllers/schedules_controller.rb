@@ -3,6 +3,7 @@ class SchedulesController < ApplicationController
 
     def index
         schedules = Schedule.select("nama, spesialis, schedule, status, schedules.id as id").joins("JOIN doctors ON schedules.id_dokter = doctors.id").where("schedules.id_pasien = #{@user.id}")
+        
         render json: {
             data: schedules
         }, status: :ok
