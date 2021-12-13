@@ -1,9 +1,20 @@
 class PasswordsController < ApplicationController
-
+    def success
+      render template: "success"
+    end
+    
     def index
       token = params[:token]
       user = Pasien.find_by(reset_password_token: token)
-      render json: {status: 'ok', data: user}, status: :ok
+      if user.present?
+        @token = user.reset_password_token
+        render template: "reset_page"
+      else
+        flash[:error_invalid] = "Link not valid or expired. Try generating a new link."
+        redirect_to password_reset_path and return 
+        render template: "reset_page"
+      end
+      # render json: {status: 'ok', data: user}, status: :ok
     end
 
     def forgot
@@ -26,21 +37,29 @@ class PasswordsController < ApplicationController
       def reset
         token = params[:token].to_s
     
-        if params[:email].blank?
-          return render json: {error: 'Token not present'}
+        if params[:token].blank?
+          # return render json: {error: 'Token not present'}
+          flash[:error_token] = "Token not present"
+          redirect_to password_reset_path and return 
         end
     
         user = Pasien.find_by(reset_password_token: token)
     
         if user.present? && user.password_token_valid?
           if user.reset_password!(params[:password])
-            render json: {status: 'ok'}, status: :ok
+            flash[:success_reset] = "Your password is successfully reseted!"
+            redirect_to password_reset_success_path and return 
+            # render json: {status: 'ok'}, status: :ok
           else
-            render json: {error: user.errors.full_messages}, status: :unprocessable_entity
+            flash[:error_reset] = user.errors.full_messages
+            redirect_to password_reset_path and return 
+            # render json: {error: user.errors.full_messages}, status: :unprocessable_entity
           end
         else
-          render json: {error:  ['Link not valid or expired. Try generating a new link.']}, status: :not_found
+          flash[:error_token_expired] = "Link not valid or expired. Try generating a new link."
+          redirect_to password_reset_path and return
+          # render json: {error:  ['Link not valid or expired. Try generating a new link.']}, status: :not_found
         end
       end
-
+      
 end

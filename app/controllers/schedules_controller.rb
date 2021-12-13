@@ -28,6 +28,7 @@ class SchedulesController < ApplicationController
     end
 
     def show_today
+        Time.zone = 'Jakarta'
         schedule = Schedule.select("nama, spesialis, harga_konsul, lokasi, nik, profile_pasien, schedule, address, status, schedules.id as id")
         .joins("JOIN doctors ON schedules.id_dokter = doctors.id")
         .where("schedules.id_pasien = #{@user.id} AND schedules.schedule = '#{Time.zone.now.beginning_of_day}'")

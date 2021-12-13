@@ -3,7 +3,8 @@ class Pasien < ApplicationRecord
   # create validation
   validates :nama, :email, :password, presence: true, on: :create
   validates :email, uniqueness: true
-  validates_confirmation_of :password_confirmation, message: 'should match confirmation'
+  # validates_confirmation_of :password_confirmation, message: 'should match confirmation'
+  validates_confirmation_of :password, message: 'should match confirmation'
   
   # update validation
   validates :tanggal_lahir,:kabupaten_kota, :umur, :jenis_kelamin, :foto, :no_hp, presence: false, on: :update
