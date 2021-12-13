@@ -9,6 +9,8 @@ class Pasien < ApplicationRecord
   # update validation
   validates :tanggal_lahir,:kabupaten_kota, :umur, :jenis_kelamin, :foto, :no_hp, presence: false, on: :update
   validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP
+
+  has_many :schedule
   
   # validates :no_hp, numericality: true, on: :update
   # validates :umur, numericality: true, on: :update

@@ -32,4 +32,10 @@ Rails.application.routes.draw do
   get "/doctor/detail/:id", to: "doctors#show"
   get "/doctor/search/:search", to: "doctors#search"
 
+  #schedules
+  get "/schedule", to: "schedules#index"
+  post "/schedule/new", to: "schedules#create"
+  get "/schedule/detail/:id", to: "schedules#show"
+  get "/schedule/today", to: "schedules#show_today"
+
 end
