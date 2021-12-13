@@ -26,6 +26,8 @@ gem 'rack-cors'
 gem 'jwt'
 gem 'kaminari'
 gem 'pry', '~> 0.13.1'
+gem 'sendinblue'
+gem 'figaro'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -60,6 +62,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
+
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
