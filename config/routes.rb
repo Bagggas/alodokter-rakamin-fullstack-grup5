@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # test
-  get '/show', to: 'pasiens#show'
+  get '/show', to: 'pasiens#index'
+  get "/test", to: "passwords#test"
 
   # pasien routes
   post '/pasien/register', to: 'pasiens#create'
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
   post '/password/forgot', to: 'passwords#forgot'
   get '/password/reset', to: 'passwords#index'
   post '/password/reset', to: 'passwords#reset'
+
+  # password reset success
+  get "/password/reset/success", to: "passwords#success"
 
   # articles
   get '/article', to: 'articles#index'

@@ -13,6 +13,7 @@ pickle-email-*.html
 
 # Configs
 /config/database.yml
+/config/application.yml
 
 # Ignore all logfiles and tempfiles.
 /log/*

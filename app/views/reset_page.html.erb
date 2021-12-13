@@ -1,0 +1,22 @@
+
+  <div class="form-signin">
+  <div class="card">
+    <div class="card-body">
+            <h3 class="text-center" style="color:#3f3d56;">Reset Your Password</h3>
+    <hr>
+      <%= form_with url: "/password/reset", method: :post do |form| %>
+        <div class="mb-3">
+            <label for="password" class="form-label" style="color:#3f3d56;">Enter New Password</label>
+            <%= form.hidden_field :token, :value => @token %>
+            <%= form.password_field :password, :class => "form-control",:id => "password",:required => true %>
+            <input class="form-check-input mt-3 input-check" type="checkbox" id="showPassword" onclick="myFunction()">
+            <label for="showPassword" class="form-label mt-2 text-secondary" readonly>Show Password</label>
+            <br>
+            <div id="passwordHelp" class="form-text" >We'll never share your password with anyone else.</div>
+        </div>
+        <%= form.submit "Submit", :class => "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  </div>
+
