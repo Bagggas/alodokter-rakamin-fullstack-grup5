@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2021_12_10_102207) do
     t.integer "id_pasien"
     t.integer "id_dokter"
     t.datetime "schedule"
+    t.datetime "end_schedule"
     t.string "profile_pasien"
     t.string "nik"
     t.text "address"

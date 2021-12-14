@@ -4,6 +4,7 @@ class CreateSchedules < ActiveRecord::Migration[6.1]
       t.integer :id_pasien
       t.integer :id_dokter
       t.datetime :schedule
+      t.datetime :end_schedule
       t.string :profile_pasien
       t.string :nik
       t.text :address

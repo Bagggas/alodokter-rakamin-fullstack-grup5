@@ -1,6 +1,10 @@
 class SchedulesController < ApplicationController
     before_action :authorized
 
+    def initialize
+        Time.zone = 'Jakarta'
+    end
+
     def index
         schedules = Schedule.select("nama, spesialis, schedule, status, schedules.id as id")
         .joins("JOIN doctors ON schedules.id_dokter = doctors.id").where("schedules.id_pasien = #{@user.id}")
@@ -28,7 +32,6 @@ class SchedulesController < ApplicationController
     end
 
     def show_today
-        Time.zone = 'Jakarta'
         schedule = Schedule.select("nama, spesialis, harga_konsul, lokasi, nik, profile_pasien, schedule, address, status, schedules.id as id")
         .joins("JOIN doctors ON schedules.id_dokter = doctors.id")
         .where("schedules.id_pasien = #{@user.id} AND schedules.schedule = '#{Time.zone.now.beginning_of_day}'")
@@ -43,24 +46,34 @@ class SchedulesController < ApplicationController
     end
 
     def create
-        params[:id_pasien] = @user.id
-        schedule = Schedule.create(create_params)
-  
-        render json: {
-            data: schedule,
-        }, status: :created
-  
-        rescue StandardError => e
+        start_consult = Schedule.where(schedule: DateTime.parse(params[:schedule])..DateTime.parse(params[:end_schedule]), id_dokter: params[:id_dokter])
+        end_consult = Schedule.where(end_schedule: DateTime.parse(params[:schedule])..DateTime.parse(params[:end_schedule]), id_dokter: params[:id_dokter])
+
+        if start_consult.present?
             render json: {
-                message: e
-            }, status: :bad_request
+                data: "Please chosee another day or hour",
+            }
+        elsif end_consult.present?
+            render json: {
+                data: "Please chosee another day or hour",
+            }
+        else
+            params[:id_pasien] = @user.id
+            schedule = Schedule.create(create_params)
+    
+            render json: {
+                data: schedule,
+            }, status: :created
+        end
     end
 
+    private
+
     def create_params
-        params.permit(:id_pasien, :id_dokter, :schedule, :profile_pasien, :nik, :address, :status)
+        params.permit(:id_pasien, :id_dokter, :schedule, :end_schedule, :profile_pasien, :nik, :address, :status)
     end
 
     def update_params
-        params.permit(:id, :id_pasien, :id_dokter, :schedule, :profile_pasien, :nik, :address, :status)
+        params.permit(:id, :id_pasien, :id_dokter, :schedule, :end_schedule, :profile_pasien, :nik, :address, :status)
     end
 end
