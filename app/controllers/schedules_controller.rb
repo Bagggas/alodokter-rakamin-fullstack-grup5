@@ -31,6 +31,17 @@ class SchedulesController < ApplicationController
         end
     end
 
+    def cancel
+        schedule = Schedule.find(params[:id])
+        schedule.update_attribute(:status, "cancel")
+
+        if schedule.valid?
+            render json: { data: schedule }, status: :ok
+          else
+            render json: { message: 'Failed to update' }, status: 406
+        end
+    end
+
     def show_today
         schedule = Schedule.select("nama, spesialis, harga_konsul, lokasi, nik, profile_pasien, schedule, address, status, schedules.id as id")
         .joins("JOIN doctors ON schedules.id_dokter = doctors.id")

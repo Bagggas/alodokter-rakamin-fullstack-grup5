@@ -37,5 +37,6 @@ Rails.application.routes.draw do
   post "/schedule/new", to: "schedules#create"
   get "/schedule/detail/:id", to: "schedules#show"
   get "/schedule/today", to: "schedules#show_today"
+  get "/schedule/cancel/:id", to: "schedules#cancel"
 
 end
