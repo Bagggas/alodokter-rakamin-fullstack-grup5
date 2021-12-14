@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/home_page'
   # test
   get '/show', to: 'pasiens#index'
   get "/test", to: "passwords#test"
