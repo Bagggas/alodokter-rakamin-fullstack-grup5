@@ -14,7 +14,7 @@ class SchedulesController < ApplicationController
                 data: schedules
             }, status: :ok
         else
-            render json: {error: ['You do not have any schedule. Please make an appoitment first.']}, status: :not_found
+            render json: {error: ['You do not have any schedule. Please make an appointment first.']}, status: :not_found
         end
     end
 
@@ -62,11 +62,11 @@ class SchedulesController < ApplicationController
 
         if start_consult.present?
             render json: {
-                data: "Please chosee another day or hour",
+                data: "Please choose another day or time",
             }
         elsif end_consult.present?
             render json: {
-                data: "Please chosee another day or hour",
+                data: "Please choose another day or time",
             }
         else
             params[:id_pasien] = @user.id
