@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_12_10_102207) do
     t.string "judul"
     t.text "konten"
     t.text "penulis"
+    t.string "kategori"
     t.string "foto"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -54,6 +55,18 @@ ActiveRecord::Schema.define(version: 2021_12_10_102207) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer "id_pasien"
+    t.integer "id_dokter"
+    t.datetime "schedule"
+    t.string "profile_pasien"
+    t.string "nik"
+    t.text "address"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

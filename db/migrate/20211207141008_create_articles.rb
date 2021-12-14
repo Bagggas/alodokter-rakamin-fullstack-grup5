@@ -4,6 +4,7 @@ class CreateArticles < ActiveRecord::Migration[6.1]
       t.string :judul
       t.text :konten
       t.text :penulis
+      t.string :kategori
       t.string :foto
 
       t.timestamps
