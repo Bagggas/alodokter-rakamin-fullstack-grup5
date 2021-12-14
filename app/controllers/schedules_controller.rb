@@ -10,7 +10,7 @@ class SchedulesController < ApplicationController
                 data: schedules
             }, status: :ok
         else
-            render json: {error: ['You do not have any schedule. Please make an appoitment first.']}, status: :not_found
+            render json: {error: ['You do not have any schedule. Please make an appointment first.']}, status: :not_found
         end
     end
 
