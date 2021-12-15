@@ -37,7 +37,7 @@ end
 (1..3).each do |id|
   Article.create!(
 # each user is assigned an id from 1-20
-      judul: Faker::Quotes::Chiquito,
+      judul: Faker::Science::science,
       konten: Faker::Lorem.paragraph,
       kategori: 'Kehamilan',
       penulis: Faker::Name.male_first_name ,
