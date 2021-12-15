@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_10_102207) do
+ActiveRecord::Schema.define(version: 2021_12_15_191700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(version: 2021_12_10_102207) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "docdays", force: :cascade do |t|
+    t.string "hari"
+    t.string "tanggal"
+    t.bigint "doctor_id", null: false
+    t.index ["doctor_id"], name: "index_docdays_on_doctor_id"
+  end
+
+  create_table "doctimes", force: :cascade do |t|
+    t.string "jam"
+    t.bigint "docday_id", null: false
+    t.index ["docday_id"], name: "index_doctimes_on_docday_id"
+  end
+
   create_table "doctors", force: :cascade do |t|
     t.string "nama"
     t.text "about"
@@ -33,7 +46,9 @@ ActiveRecord::Schema.define(version: 2021_12_10_102207) do
     t.integer "rating"
     t.integer "jumlah_pasien"
     t.integer "jumlah_pengalaman"
+    t.string "rumah_sakit"
     t.string "lokasi"
+    t.string "alamat"
     t.string "edukasi"
     t.string "fakultas"
     t.string "jurusan"
@@ -69,4 +84,6 @@ ActiveRecord::Schema.define(version: 2021_12_10_102207) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "docdays", "doctors"
+  add_foreign_key "doctimes", "docdays"
 end

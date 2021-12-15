@@ -8,7 +8,9 @@ class CreateDoctors < ActiveRecord::Migration[6.1]
       t.integer :rating
       t.integer :jumlah_pasien
       t.integer :jumlah_pengalaman
+      t.string :rumah_sakit
       t.string :lokasi
+      t.string :alamat
       t.string :edukasi
       t.string :fakultas
       t.string :jurusan
