@@ -1,6 +1,6 @@
 <template>
-<div class="container m-5">
-  <div class="row">
+<div class="container">
+  <div class="row m-2">
     <div class="col-sm-8 d-inline">
     <p class="h4">{{ article.judul }}</p>
     <p><small>Oleh : {{ article.penulis }}.</small></p>
@@ -54,3 +54,4 @@
     border-radius: 15px;
   }
 </style>
+

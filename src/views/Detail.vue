@@ -1,6 +1,6 @@
 <template>
     <Navbar/>
-    <Artikel :articles='articles' />
+    <Contents :articles='articles' />
     <Footer/>
 </template>
 
@@ -8,12 +8,12 @@
 // @ is an alias to /src
 import Navbar from '@/components/layouts/Navbar.vue'
 import Footer from '@/components/layouts/Footer.vue'
-import Artikel from '@/components/Artikel/Detail.vue'
+import Contents from '@/components/Detail/Contents.vue'
 
 export default {
   components: {
       Navbar,
-      Artikel,
+      Contents,
       Footer
       },
     data() {
