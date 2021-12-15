@@ -1,7 +1,7 @@
 <template>
 <div>
       <div class="container-fluid">
-      <img src="css/Alo Asset/Banner.png" class="img-fluid" alt="Banner tentang kami">
+      <img src="/css/Alo Asset/Banner.png" class="img-fluid" alt="Banner tentang kami">
       </div>
 <div class="container">
   <div class="row justify-content-center">

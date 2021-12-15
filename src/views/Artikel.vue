@@ -1,21 +1,20 @@
 <template>
-    <!-- <Navbar/> -->
+    <Navbar/>
     <Artikel :articles='articles' />
-    <!-- <Footer/> -->
+    <Footer/>
 </template>
 
 <script>
 // @ is an alias to /src
-// import Navbar from '@/components/layouts/Navbar.vue'
-// import Footer from '@/components/layouts/Footer.vue'
-// import Detail from '@/components/Artikel/Detail.vue'
-import Artikel from '@/components/Artikel/Contents.vue'
+import Navbar from '@/components/layouts/Navbar.vue'
+import Footer from '@/components/layouts/Footer.vue'
+import Artikel from '@/components/Artikel/Detail.vue'
 
 export default {
   components: {
-    //   Navbar,
+      Navbar,
       Artikel,
-    //   Footer
+      Footer
       },
     data() {
         return {

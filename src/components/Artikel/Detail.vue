@@ -1,24 +1,12 @@
 <template>
-<div class="container">
+<div class="container m-5">
   <div class="row">
     <div class="col-sm-8 d-inline">
-    <p class="h4">Pentingan mengajarkan kesehatan gigi dan mulut</p>
-    <p><small>Oleh : Adiwijaya P.</small></p>
+    <p class="h4">{{ article.judul }}</p>
+    <p><small>Oleh : {{ article.penulis }}.</small></p>
     <img src="/css/Alo Asset/hero-artikel.png" class="img-fluid mb-5" alt="Artikel Pentingnya Menjaga Kesehatan Gigi dan Mulut">
 
-    <p class="fw-bold">cara menjaga kesehatan gigi dan mulut</p>
-    <p>Dalam situasi saat ini, menjaga kebersihan pribadi sangatlah penting. 
-    Pastinya sekarang, kamu sudah terbiasa mengenakan masker dan mencuci tangan dengan seksama. Tapi jangan lupakan pentingnya menjaga kebersihan gigi dan mulut juga, lho. Berikut adalah beberapa 
-    tips tentang cara menjaga kesehatan gigi dan mulut.</p>
-    <p class="fw-bold">MENGAPA KEBERSIHAN GIGI DAN MULUT ITU PENTING?</p>
-    <p>Mulut kita adalah titik masuk ke saluran pencernaan dan pernapasan. 
-    Mulut juga merupakan rumah bagi setidaknya 700 spesies mikroba. 
-    Ini termasuk bakteri baik dan jahat. Menyikat gigi dan flossing secara 
-    teratur dapat membantu menjaga kebersihan gigi dan mulut. 
-    Namun, tanpa kebersihan gigi dan mulut yang baik, bakteri jahat dapat 
-    menyebabkan infeksi, seperti kerusakan gigi dan penyakit gusi. 
-    Jika tidak diobati, penyakit ini dapat mempengaruhi kesehatanmu 
-    secara keseluruhan.</p>
+    <p>{{ article.konten }}</p>
     </div>
 
     <div class="col-sm-4">
@@ -41,6 +29,25 @@
   </div>
 </div>
 </template>
+
+<script>
+    export default {
+       name: 'Detail',
+
+       data(){
+           return {
+              id: this.$route.params.id, //this is the id from the browser
+              article: Array
+           }
+       },
+       async created() {
+          // GET request using fetch with async/await
+          const response = await fetch("https://janjidokter.herokuapp.com/article/detail/"+this.id);
+          const data = await response.json();
+          this.article = data;
+      }
+    }
+</script>
 
 <style scoped>
   .card {

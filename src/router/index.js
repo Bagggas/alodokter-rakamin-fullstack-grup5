@@ -17,15 +17,15 @@ const routes = [
     name: 'Konsultasi',
     component: () => import('../views/Konsultasi.vue')
   },
-  {
-    path: '/artikel',
-    name: 'Artikels',
-    component: () => import('../views/Artikel.vue')
-  },
+  // {
+  //   path: '/artikel',
+  //   name: 'Artikels',
+  //   component: () => import('../views/Artikel.vue')
+  // },
   {
     path: '/artikel/detail/:id',
     name: 'Artikel',
-    component: () => import('../components/Artikel/Detail.vue'),
+    component: () => import('../views/Artikel.vue'),
     props: true
   }
 ]
