@@ -18,14 +18,16 @@ export default {
       },
     data() {
         return {
-            articles: null
+            articles: [{}],
+            search: ''
         };
     },
-    async created() {
-        // GET request using fetch with async/await
-        const response = await fetch("https://janjidokter.herokuapp.com/article");
-        const data = await response.json();
-        this.articles = data.data;
-    }
+    created:function() {
+        fetch('https://janjidokter.herokuapp.com/article')
+        .then(res => res.json())
+        .then(res => {
+        this.articles = res;
+        })
+    },
 }
 </script>
