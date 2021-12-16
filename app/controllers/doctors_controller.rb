@@ -15,7 +15,6 @@ class DoctorsController < ApplicationController
     def show
         @export_data = Doctor.find(params[:id])
         render :json => @export_data.to_json(:include => { :docday => { :except => [:doctor_id, :id], :include => {:doctime => { :except => [:docday_id] } }  }}), status: :ok
-        
         rescue ActiveRecord::RecordNotFound => e
             render json: {
             message: e
