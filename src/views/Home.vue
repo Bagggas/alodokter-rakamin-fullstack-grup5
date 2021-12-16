@@ -18,7 +18,7 @@ export default {
       },
     data() {
         return {
-        articles: null
+            articles: null
         };
     },
     async created() {

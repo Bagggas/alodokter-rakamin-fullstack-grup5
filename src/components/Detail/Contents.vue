@@ -4,7 +4,7 @@
     <div class="col-sm-8 d-inline">
     <p class="h4">{{ article.judul }}</p>
     <p><small>Oleh : {{ article.penulis }}.</small></p>
-    <img src="/css/Alo Asset/hero-artikel.png" class="img-fluid mb-5" alt="Artikel Pentingnya Menjaga Kesehatan Gigi dan Mulut">
+    <img :src="article.foto" class="img-fluid mb-5" alt="Artikel Pentingnya Menjaga Kesehatan Gigi dan Mulut">
 
     <p>{{ article.konten }}</p>
     </div>
@@ -37,7 +37,7 @@
        data(){
            return {
               id: this.$route.params.id, //this is the id from the browser
-              article: Array
+              article: Array,
            }
        },
        async created() {

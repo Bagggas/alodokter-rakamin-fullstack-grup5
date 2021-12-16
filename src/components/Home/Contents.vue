@@ -4,13 +4,13 @@
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="/css/Alo Asset/Banner2.png" class="d-block w-100 img-carousel" >
+          <img src="/css/Alo Asset/Banner2.png" class="img-responsive d-block w-100 img-carousel" >
         </div>
         <div class="carousel-item">
-          <img src="/css/Alo Asset/Banner1.png" class="d-block w-100 img-carousel" >
+          <img src="/css/Alo Asset/Banner1.png" class="img-responsive d-block w-100 img-carousel" >
         </div>
         <div class="carousel-item">
-          <img src="/css/Alo Asset/Banner.png" class="d-block w-100 img-carousel">
+          <img src="/css/Alo Asset/Banner.png" class="img-responsive d-block w-100 img-carousel">
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -24,45 +24,55 @@
     </div>
   </div>
   <div class="container mt-5 mb-5">    
-      <h1>Artikel terkini</h1>
-      <span>Memberikan informasi seputar kesehatan pilihan terbaru</span>
+      <h3>Artikel Kesehatan</h3>
       <hr>
+      <div class="row">
+        <div class="card border-0 mb-3">
+          <div class="row g-0">
+            <div class="col-md-6">
+              <img :src="articles[0].foto" height="350" :alt="articles[0].judul" style="object-fit: cover;">
+            </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <p class="card-text"><span class="badge bg-dark">{{ articles[0].kategori }}</span></p>
+                <h5 class="card-title fw-bold h1">{{ articles[0].judul }}</h5>
+                <p class="card-text">Sudah pernah mendengar kopi chicory sebelumnya? Nah, kalau kamu adalah pencinta kopi yang lagi ingin mengurangi asupan kafein harian, kopi chicory bisa menjadi alternatifnya...</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                <p class="btn btn-primary">Lihat Artikel</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+          <a class="p-2 link-secondary" href="#">World</a>
+          <a class="p-2 link-secondary" href="#">U.S.</a>
+          <a class="p-2 link-secondary" href="#">Technology</a>
+          <a class="p-2 link-secondary" href="#">Design</a>
+          <a class="p-2 link-secondary" href="#">Culture</a>
+          <a class="p-2 link-secondary" href="#">Business</a>
+          <a class="p-2 link-secondary" href="#">Politics</a>
+          <a class="p-2 link-secondary" href="#">Opinion</a>
+          <a class="p-2 link-secondary" href="#">Science</a>
+          <a class="p-2 link-secondary" href="#">Health</a>
+          <a class="p-2 link-secondary" href="#">Style</a>
+          <a class="p-2 link-secondary" href="#">Travel</a>
+        </nav>
+      </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col" v-for="article in articles" :key="article.id">
-                <div class="card shadow-sm p-3  mt-5 bg-body">
-                    <div class="row g-0 d-flex align-items-center">
-                        <div class="col-md-5">
-                            <img src="/css/Alo Asset/hero-artikel.png" class="img-fluid rounded-start" alt="Artikel Pentingnya Menjaga Kesehatan Gigi dan Mulut">
-                        </div>
-                        <div class="col-md-7">
-                            <div class="card-body">
-                                <p class="card-text"><small class="text-muted">Gigi</small></p>
-                                <p class="card-title fw-bold h5">{{ article.judul }}</p>
-                                <p class="card-text"><small>Oleh : {{ article.penulis }}.</small></p>
-                            </div>
-                        </div>
+                  <div class="card border-0 m-3">
+                    <p class="card-text"><span class="badge bg-dark">{{ article.kategori }}</span></p>
+                    <img :src="article.foto" height="200" :alt="article.judul" style="object-fit: cover;">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ article.judul }}</h5>
+                      <p class="card-text">{{ article.konten }}</p>
                     </div>
-                        <div class="card-footer text-center mt-3">
-                            <router-link :to="{ name: 'Artikel', params: { id: article.id }}">
-                                <p class="btn btn-primary">Lihat Artikel</p>
-                            </router-link>
-                        </div>
-                </div>
+                  </div>
             </div>
         </div>
-      <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav>
   </div>
 </div>
 </template>
@@ -71,8 +81,23 @@
   export default {
     name: 'articlesIndex',
     props: {
-      articles: Array,
+      articles: Array
     },
+    data() {
+        return {
+          article: [],
+            search: ''
+        }
+    },
+    filterArtikel() {
+
+                fetch("https://janjidokter.herokuapp.com/article/search/"+this.search)
+                    .then(response => response.json())
+                    .then(data=>{
+                        this.article=data;
+                    })
+
+            }
   }
 </script>
 
@@ -95,33 +120,33 @@
       padding: 0;
       background-color: black;
     }
-  .jumbotron-image {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  .card {
-    border-radius: 15px;
-  }
-  .card-footer {
-      background: none!important;
-      border-top: none !important;
-      background-color: none !important;
-  }
-  .card-footer .btn {
-      border-radius: 20px;
-      background-color: #004EC0;
-  }
-  .card {
-    border-radius: 15px;
-  }
-  .card-footer {
-      background: none!important;
-      border-top: none !important;
-      background-color: none !important;
-  }
-  .card-footer .btn {
-      border-radius: 20px;
-      background-color: #004EC0;
-  }
+    .jumbotron-image {
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .card {
+      border-radius: 15px;
+    }
+    .card-footer {
+        background: none!important;
+        border-top: none !important;
+        background-color: none !important;
+    }
+    .card-footer .btn {
+        border-radius: 20px;
+        background-color: #004EC0;
+    }
+    .card {
+      border-radius: 15px;
+    }
+    .card-footer {
+        background: none!important;
+        border-top: none !important;
+        background-color: none !important;
+    }
+    .card-footer .btn {
+        border-radius: 20px;
+        background-color: #004EC0;
+    }
 </style>
