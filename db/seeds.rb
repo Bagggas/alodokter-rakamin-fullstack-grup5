@@ -30,7 +30,7 @@ end
       konten: Faker::Lorem.paragraph,
       kategori: 'Kesehatan',
       penulis: Faker::Name.male_first_name ,
-      foto: Faker::LoremFlickr.image(search_terms:['health']),
+      foto: Faker::LoremFlickr.image(size: "300x300" ,search_terms:['health']),
   )
 end
 
@@ -41,7 +41,7 @@ end
       konten: Faker::Lorem.paragraph,
       kategori: 'Kehamilan',
       penulis: Faker::Name.male_first_name ,
-      foto: Faker::LoremFlickr.image(search_terms:['apple']),
+      foto: Faker::LoremFlickr.image(size: "300x300",search_terms:['apple']),
   )
 end
 
