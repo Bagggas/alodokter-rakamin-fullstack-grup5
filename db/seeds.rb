@@ -30,7 +30,7 @@ end
       konten: Faker::Lorem.paragraph,
       kategori: 'Kesehatan',
       penulis: Faker::Name.male_first_name ,
-      foto: 'https://images.pexels.com/photos/10153600/pexels-photo-10153600.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+      foto: Faker::LoremFlickr.image(search_terms:['health']),
   )
 end
 
@@ -41,7 +41,7 @@ end
       konten: Faker::Lorem.paragraph,
       kategori: 'Kehamilan',
       penulis: Faker::Name.male_first_name ,
-      foto: 'https://images.pexels.com/photos/10153600/pexels-photo-10153600.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+      foto: Faker::LoremFlickr.image(search_terms:['apple']),
   )
 end
 
