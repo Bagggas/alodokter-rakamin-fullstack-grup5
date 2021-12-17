@@ -1,5 +1,4 @@
 <template>
-    <Navbar/>
     <Contents :articles='articles' />
     <Footer/>
 </template>
