@@ -11,6 +11,7 @@ class Pasien < ApplicationRecord
   validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP
 
   has_many :schedule
+  has_many :booking
   
   # validates :no_hp, numericality: true, on: :update
   # validates :umur, numericality: true, on: :update

@@ -38,4 +38,10 @@ Rails.application.routes.draw do
   get "/schedule/detail/:id", to: "schedules#show"
   get "/schedule/today", to: "schedules#show_today"
 
+  # booking
+  get "/booking", to: "bookings#index"
+  post "/booking/create", to: "bookings#create"
+  get "/booking/list", to: "bookings#list"
+  get "/booking/detail/:id", to: "bookings#show"
+
 end
