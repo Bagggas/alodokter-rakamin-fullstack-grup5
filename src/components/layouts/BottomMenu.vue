@@ -1,9 +1,9 @@
 <template>
-  <div class="container mx-auto p-3 py-md-5 m-5">
+  <div class="container">
     <div class="row g-5">
       <div class="col-md-4">
         <h5 class="fw-bold">JanjiDokter</h5>
-        <small class="lh-sm text-muted">JanjiDokter merupakan sebuah platform yang bertujuan untuk masyarakat Indonesia berkonsultasi dengan para dokter kapan saja dan dimana saja.</small>
+        <small class="lh-sm tulisan">JanjiDokter merupakan sebuah platform yang bertujuan untuk masyarakat Indonesia berkonsultasi dengan para dokter kapan saja dan dimana saja.</small>
         <ul class="icon-list d-flex mt-3">
           <li>
             <a href="https://github.com/Bagggas/alodokter-rakamin-fullstack-grup5">
@@ -77,10 +77,16 @@
     margin: 15px 15px 15px 0;
   }
   ul li a {
-    color: #919191;
+    color: white;
     text-decoration: none;
   }
   .page-list{
     margin: 0 0 0 0 !important;
+  }
+  .warna{
+    background-color: #3570d2;
+  }
+  .tulisan{
+    color: white;
   }
 </style>

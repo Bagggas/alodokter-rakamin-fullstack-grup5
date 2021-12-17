@@ -6,6 +6,9 @@
                     <div class="card-body">
                       <h5 class="card-title">{{ article.judul }}</h5>
                       <p class="card-text">{{ article.konten }}</p>
+                      <router-link :to="{ name: 'Artikel', params: { id: article.id }}" class="link">
+                            <p>Baca Selengkapnya</p>
+                      </router-link>
                     </div>
                   </div>
             </div>
@@ -17,3 +20,9 @@ export default {
     props: ['article']
 }
 </script>
+<style scoped>
+.link{
+  text-decoration: none !important;
+}
+</style>
+

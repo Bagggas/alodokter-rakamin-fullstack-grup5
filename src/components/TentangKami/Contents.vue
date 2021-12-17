@@ -27,7 +27,7 @@
   <div class="row justify-content-center">
     <div class="col-12 text-center m-5">
     <p class="h5 mb-5">Platform Kesehatan Tepercaya No. 1 di Indonesia</p>
-    <p> adalah platform kesehatan digital nomor satu di Indonesia dengan lebih dari 26 juta 
+    <p> ALODOKTER adalah platform kesehatan digital nomor satu di Indonesia dengan lebih dari 26 juta 
                             pengguna aktif setiap bulannya, serta lebih dari 30 ribu dokter yang bergabung. Sejak 
                             tahun 2014, ALODOKTER telah unggul dalam menyediakan informasi kesehatan yang akurat, 
                             mudah dipahami, dan dapat diakses oleh siapa saja, kapan saja, dan di mana saja. Semua

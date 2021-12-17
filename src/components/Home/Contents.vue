@@ -24,20 +24,25 @@
     </div>
   </div>
   <div class="container mt-5 mb-5">    
-      <h3>Artikel Kesehatan</h3>
-      <hr>
+      <h2>Artikel Kesehatan</h2>
+      <hr class="space">
+      <div class="nav-scroller py-1 mb-2 jarak">
+        <nav class="nav d-flex justify-content-between">
+          <a class="p-2 link-secondary" href="#">Nutrisi</a>
+          <a class="p-2 link-secondary" href="#">Diabetes</a>
+          <a class="p-2 link-secondary" href="#">Jantung</a>
+          <a class="p-2 link-secondary" href="#">Kesehatan Mulut</a>
+          <a class="p-2 link-secondary" href="#">Kolesterol Tinggi</a>
+          <a class="p-2 link-secondary" href="#">Diet</a>
+          <a class="p-2 link-secondary" href="#">Kecantikan</a>
+          <a class="p-2 link-secondary" href="#">Kulit</a>
+          <a class="p-2 link-secondary" href="#">Kehamilan</a>
+          <a class="p-2 link-secondary" href="#">Bayi</a>
+        </nav>
+      </div>
+      <hr class="spacey">
       <div class="row">
           <Features :feature='feature'/>
-      </div>
-      <hr>
-      <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-between">
-          <a class="p-2 link-secondary" href="#">World</a>
-          <a class="p-2 link-secondary" href="#">U.S.</a>
-          <a class="p-2 link-secondary" href="#">Technology</a>
-          <a class="p-2 link-secondary" href="#">Design</a>
-          <a class="p-2 link-secondary" href="#">Culture</a>
-        </nav>
       </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <ArtikelCard
@@ -46,10 +51,12 @@
             v-bind:article="article"
           />
         </div>
+        <center>
         <p>
-          <button @click="prevPage">Previous</button> 
-          <button @click="nextPage">Next</button>
+          <button class="btn btn-primary" @click="prevPage" style="margin-right:5px">Sebelumnya</button> 
+          <button class="btn btn-primary" @click="nextPage">Selanjutnya</button>
         </p>
+        </center>
   </div>
 </div>
 </template>
@@ -140,5 +147,17 @@ import Features from '@/components/Card/Features.vue'
     .card-footer .btn {
         border-radius: 20px;
         background-color: #004EC0;
+    }
+    .jarak{
+      padding: 5px;
+    }
+    .link-secondary{
+      text-decoration: none;
+    }
+    .space{
+      margin-bottom: -5px;
+    }
+    .spacey{
+      margin-top: -10px;
     }
 </style>

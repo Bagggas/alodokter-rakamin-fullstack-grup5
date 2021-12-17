@@ -16,7 +16,9 @@ export default {
     data() {
         return {
             articles: [{}],
-            search: ''
+            search: '',
+            currentPage: 1,
+            totalPages: 10
         };
     },
     created:function() {
@@ -25,6 +27,6 @@ export default {
         .then(res => {
         this.articles = res;
         })
-    },
+    }
 }
 </script>
