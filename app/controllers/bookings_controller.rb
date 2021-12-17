@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-    before_action :authorized
+  before_action :authorized, except: %i[index, detail]
     # def initialize
     #     Time.zone = 'Jakarta'
     # end
@@ -11,6 +11,14 @@ class BookingsController < ApplicationController
         render json: data, status: :ok
     end
 
+    def detail
+        data = Doctor.select('*').joins(:docday=>[:doctime]).find(params[:id])
+        # data = Doctor.select('doctors.id,doctors.nama,doctors.spesialis,doctors.harga_konsul,
+        #     docdays.hari,doctimes.start_time,doctimes.end_time').joins(:docday=>[:doctime])
+        #     .where("doctors.id = #{(params[:id])}")
+        render json: data, status: :ok
+    end
+
     def create
         params[:hari] = Date.parse(params[:hari]).strftime("%A")
         day_check = Doctor.joins(:docday).where("docdays.hari = ?", params[:hari])
@@ -19,6 +27,8 @@ class BookingsController < ApplicationController
         start_consult = Booking.where(start_time: DateTime.parse(params[:start_time])..DateTime.parse(params[:end_time]), doctor_id: params[:doctor_id])
         end_consult = Booking.where(end_time: DateTime.parse(params[:start_time])..DateTime.parse(params[:end_time]), doctor_id: params[:doctor_id])
         
+
+
         if day_check.present?
             
             time_check = Doctor.select('doctors.id,doctimes.start_time,doctimes.end_time').
@@ -30,6 +40,7 @@ class BookingsController < ApplicationController
             if time_check.present?
                 params[:pasien_id] = @user.id
                 params[:status] = "Waiting"
+                params[:hari] = Date.parse(params[:hari]).strftime("%FT%T")
 
                 data = Booking.create(booking_param)
 
@@ -46,14 +57,23 @@ class BookingsController < ApplicationController
         end 
     end
 
+    # def list
+    #     data = Booking.all
+    #     render json: data, status: :ok
+    # end
+
     def list
-        data = Booking.all
-        render json: data, status: :ok
+        data = Booking.where("pasien_id = #{@user.id}")
+        if data.present?
+            render json: data, status: :ok
+        else
+            render json: {status:"Not found"}, status: :not_found
+        end
     end
 
     def show
         data = Booking.find(params[:id])
-        if
+        if data.present?
             render json: data, status: :ok
         else
             render json: {status:"Error, ID is not found"}, status: :not_found

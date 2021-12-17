@@ -33,15 +33,17 @@ Rails.application.routes.draw do
   get "/doctor/search/:search", to: "doctors#search"
 
   #schedules
-  get "/schedule", to: "schedules#index"
-  post "/schedule/new", to: "schedules#create"
-  get "/schedule/detail/:id", to: "schedules#show"
-  get "/schedule/today", to: "schedules#show_today"
+  # get "/schedule", to: "schedules#index"
+  # post "/schedule/new", to: "schedules#create"
+  # get "/schedule/detail/:id", to: "schedules#show"
+  # get "/schedule/today", to: "schedules#show_today"
 
   # booking
-  get "/booking", to: "bookings#index"
-  post "/booking/create", to: "bookings#create"
+  get "/schedule", to: "bookings#index"
+  get "/schedule/:id", to: "bookings#detail"
+
   get "/booking/list", to: "bookings#list"
+  post "/booking/create", to: "bookings#create"
   get "/booking/detail/:id", to: "bookings#show"
 
 end
