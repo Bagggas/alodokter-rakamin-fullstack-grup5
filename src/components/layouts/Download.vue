@@ -2,8 +2,8 @@
     <div class="container py-4">
         <div class="p-5 mb-4 bg-light">
         <div class="container-fluid py-3 text-center">
-            <h1 class="display-6 fw-bold">Download Janji Dokter App, Now!</h1>
-            <p class="fs-6">Get latest updated from us and booking the favorite doctors!</p>
+            <h1 class="display-6 fw-bold">Download Aplikasi Janji Dokter, Sekarang!</h1>
+            <p class="fs-6">Chat lebih dari 1.000 dokter di Aplikasi Alodokter! Respons Cepat, Jawaban Akurat!</p>
             <img src="/css/Alo Asset/google-play-badge.png" class="download" alt="GP Button">
         </div>
         </div>
