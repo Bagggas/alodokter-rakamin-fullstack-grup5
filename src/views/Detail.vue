@@ -6,13 +6,12 @@
 
 <script>
 // @ is an alias to /src
-import Navbar from '@/components/layouts/Navbar.vue'
+
 import Footer from '@/components/layouts/Footer.vue'
 import Contents from '@/components/Detail/Contents.vue'
 
 export default {
   components: {
-      Navbar,
       Contents,
       Footer
       },

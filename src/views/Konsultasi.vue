@@ -1,19 +1,16 @@
 <template>
-    <Navbar/>
     <Contents :doctors='doctors'/>
     <Footer/>
 </template>
 
 <script>
 // @ is an alias to /src
-import Navbar from '@/components/layouts/Navbar.vue'
 import Contents from '@/components/Konsultasi/Contents.vue'
 import Footer from '@/components/layouts/Footer.vue'
 
 export default {
   components: {
       Contents,
-      Navbar,
       Footer  
       },
     data() {
