@@ -3,7 +3,6 @@ class DoctorsController < ApplicationController
 
     def index
         doctors = Doctor.page(params[:page]).per(params[:per_page])
-
         render json: {
             data: doctors,
             meta: {
@@ -12,15 +11,15 @@ class DoctorsController < ApplicationController
             }
         }
     end
-
+    
     def show
-        doctors = Doctor.find(params[:id])
-        render json: doctors, status: :ok
-
+        @export_data = Doctor.find(params[:id])
+        render :json => @export_data.to_json(:include => { :docday => { :except => [:doctor_id, :id], :include => {:doctime => { :except => [:docday_id] } }  }}), status: :ok
+        
         rescue ActiveRecord::RecordNotFound => e
-        render json: {
+            render json: {
             message: e
-        }, status: :not_found
+            }, status: :not_found
     end
 
     def search
