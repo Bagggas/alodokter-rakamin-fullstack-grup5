@@ -64,20 +64,23 @@ class BookingsController < ApplicationController
 
     def list
         data = Booking.where("pasien_id = #{@user.id}")
-        if data.present?
-            render json: data, status: :ok
-        else
-            render json: {status:"Not found"}, status: :not_found
-        end
+
+        render json: data, status: :ok
+        
+        rescue ActiveRecord::RecordNotFound => e
+            render json: {
+              message: e
+            }, status: :not_found
     end
 
     def show
         data = Booking.find(params[:id])
-        if data.present?
-            render json: data, status: :ok
-        else
-            render json: {status:"Error, ID is not found"}, status: :not_found
-        end
+        render json: data, status: :ok
+
+        rescue ActiveRecord::RecordNotFound => e
+            render json: {
+            message: e
+            }, status: :not_found
     end
 
     def booking_param
