@@ -22,7 +22,12 @@
                     <span class="input-group-text" id="basic-addon1"><img src="/css/Alo Asset/mail-black.png" alt="mail icon" width="15"></span>
                     <input type="email" v-model="email" class="form-control" placeholder="Your email">
                 </div>
-                <button class="w-100 btn btn-lg btn-primary rounded-pill fs-5 mb-3" type="submit" @click="submitForm();">Kirim Instruksi</button>
+                <button class="w-100 btn btn-lg btn-primary rounded-pill fs-5 mb-3" type="submit" @click="submitForm();">
+                        <div v-show="loading" class="spinner-border spinner-border-sm" role="status">
+                            <span class="sr-only"></span>
+                        </div>
+                        <span v-show="!loading">Kirim Instruksi</span>
+                </button>
             </form>
             </main>
         </section>
@@ -42,6 +47,7 @@
       return {
         postResult: null,
         email: '',
+        loading: false,
       }
     },
     methods: {
@@ -58,6 +64,7 @@
         };
 
         try {
+          this.loading = true
           const res = await fetch(`https://janjidokter.herokuapp.com/password/forgot`, {
             method: "post",
             headers: {
@@ -68,7 +75,7 @@
           });
 
           if (!res.ok) {
-            console.log(res);
+            this.loading = false;
             const message = `An error has occured: ${res.status} - ${res.statusText}`;
             throw new Error(message);
           }
@@ -86,8 +93,10 @@
 
           this.email = '';
           this.postResult = this.fortmatResponse(result);
+          this.loading = false;
         } catch (err) {
           this.postResult = err.message;
+            this.loading = false;
         }
       },
 

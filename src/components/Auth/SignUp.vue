@@ -13,8 +13,9 @@
                         <span class="input-group-addon">
                         <i class="glyphicon glyphicon-earphone"></i>
                         </span>
-                        <input name="name" placeholder="Nama Lengkap" class="form-control" type="text">
+                        <input name="name" v-model="nama" placeholder="Nama Lengkap" class="form-control" type="text">
                     </div>
+                        <span class="text-danger fw-bold" style="font-size: 14px" v-if="errorMsg.nama">{{ errorMsg.nama }}</span>
                 </div>
                 <!-- Text input-->
                 <div class="form-group mb-3 col-lg-6 mx-auto">
@@ -22,31 +23,38 @@
                         <span class="input-group-addon">
                         <i class="glyphicon glyphicon-envelope"></i>
                         </span>
-                        <input name="email" placeholder="Email" class="form-control" type="text">
+                        <input name="email" v-model="email" placeholder="Email" class="form-control" type="text">
                     </div>
+                        <span class="text-danger fw-bold" style="font-size: 14px" v-if="errorMsg.email">{{ errorMsg.email }}</span>
                 </div>
                 <div class="form-group mb-3 col-lg-6 mx-auto">
                     <div class="input-group">
                         <span class="input-group-addon">
                         <i class="glyphicon glyphicon-user"></i>
                         </span>
-                        <input name="password" placeholder="Kata Sandi" class="form-control" type="password">
+                        <input name="password" v-model="password" placeholder="Kata Sandi" class="form-control" type="password">
                     </div>
+                        <span class="text-danger fw-bold" style="font-size: 14px" v-if="errorMsg.password">{{ errorMsg.password }}</span>
                 </div>
                 <div class="form-group mb-3 col-lg-6 mx-auto">
                     <div class="input-group">
                         <span class="input-group-addon">
                         <i class="glyphicon glyphicon-user"></i>
                         </span>
-                        <input name="password" placeholder="Konfirmasi Kata Sandi" class="form-control" type="password">
+                        <input name="password" v-model="password_confirmation" placeholder="Konfirmasi Kata Sandi" class="form-control" type="password">
                     </div>
+                        <span class="text-danger fw-bold" style="font-size: 14px" v-if="errorMsg.password_confirmation">{{ errorMsg.password_confirmation }}</span>
                 </div>
                 <div class="form-group mb-3 col-lg-6 mx-auto">
                     <small><input type="checkbox" @click="changeState()" name="checkbox"> Saya Setuju dengan Syarat & Ketentuan </small>
                 </div>
                 <!-- Button -->
                 <div class="form-group mb-3 col-lg-6 mx-auto">
-                    <button type="submit" class="btn btn-primary" v-bind:class="[{ 'disabled': isChecked }]">Daftar <span></span>
+                    <button type="button" class="btn btn-primary" v-bind:class="[{ 'disabled': isChecked }]" @click="submitForm()">
+                        <div v-show="loading" class="spinner-border spinner-border-sm" role="status">
+                            <span class="sr-only"></span>
+                        </div>
+                        <span v-show="!loading">Daftar Sekarang</span>
                     </button>
                 </div>
             </form>
@@ -60,13 +68,79 @@ export default {
     name: 'daftar',
     data() {
         return {
-            isChecked: true
+            isChecked: true,
+            postResult: null,
+            nama: '',
+            email: '',
+            password: '',
+            password_confirmation: '',
+            errorMsg: '',
+            loading: false,
         }
     },
     methods: {
         changeState() {
         this.isChecked = !this.isChecked
+        },
+      fortmatResponse(res) {
+        return JSON.stringify(res, null, 2);
+      },
+
+      async submitForm() {
+        const postData = {
+          nama: this.nama,
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.password_confirmation,
+        };
+
+        try {
+            this.loading = true
+          const res = await fetch(`https://janjidokter.herokuapp.com/pasien/register`, {
+            method: "post",
+            headers: {
+              "Content-Type": "application/json",
+              "x-access-token": "token-value",
+            },
+            body: JSON.stringify(postData),
+          });
+
+          if (!res.ok) {
+            const message = `An error has occured: ${res.status} - ${res.statusText}`;
+            const errorMsg = await res.json();
+            this.errorMsg = errorMsg['errors'];
+            this.loading = false
+
+            throw new Error(message);
+          }
+
+          const data = await res.json();
+
+          const result = {
+            status: res.status + "-" + res.statusText,
+            headers: {
+              "Content-Type": res.headers.get("Content-Type"),
+              "Content-Length": res.headers.get("Content-Length"),
+            },
+            data: data,
+          };
+
+          
+            this.nama = '';
+            this.email = '';
+            this.password = '';
+            this.password_confirmation = '';
+            this.loading = false
+          this.postResult = this.fortmatResponse(result);
+        } catch (err) {
+          this.postResult = err.message;
+            this.loading = false
         }
+      },
+
+      clearPostOutput() {
+        this.postResult = null;
+      },
     }
 }
 </script>
