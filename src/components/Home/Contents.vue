@@ -24,7 +24,7 @@
     </div>
   </div>
   <div class="container mt-5 mb-5">    
-      <h2>Artikel Kesehatan</h2>
+      <h2>Artikel terkini untuk anda</h2>
       <hr class="space">
       <div class="nav-scroller py-1 mb-2 jarak">
         <nav class="nav d-flex justify-content-between">
@@ -44,6 +44,15 @@
       <div class="row">
           <Features :feature='feature'/>
       </div>
+        <hr>
+        <div class="d-flex bd-highlight">
+          <div class="p-2 flex-grow-1 bd-highlight">
+            <input type="text" class="form-control" id="inputPassword" placeholder="Masukkan keywords">
+          </div>
+          <div class="p-2 bd-highlight">
+            <div class="btn btn-primary">Search</div>
+          </div>
+        </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <ArtikelCard
             v-for="article in data"
@@ -117,7 +126,7 @@ import Features from '@/components/Card/Features.vue'
     }
     .c-jumbotron{
       padding: 0;
-      background-color: black;
+      /* background-color: black; */
     }
     .jumbotron-image {
       background-position: center center;

@@ -6,7 +6,10 @@
             </div>
             <div class="col-md-6 align-self-center">
               <div class="card-body">
-                <p class="card-text"><span class="badge bg-primary">{{ feature.kategori }}</span></p>
+                <p class="card-text">
+                  <span class="badge bg-primary">{{ feature.kategori }}</span>
+                  <span class="badge ms-2 bg-danger">Terbaru</span>
+                  </p>
                 <h5 class="card-title fw-bold h1">{{ feature.judul }}</h5>
                 <p class="card-text">{{ feature.konten }}</p>
                 <p class="card-text"><small class="text-muted">{{ feature.updated_at}}</small></p>
