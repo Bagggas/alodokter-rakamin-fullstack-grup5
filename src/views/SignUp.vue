@@ -6,7 +6,7 @@
 <script>
 // @ is an alias to /src
 import Footer from '@/components/layouts/Footer.vue'
-import Contents from '@/components/layouts/SignUp.vue'
+import Contents from '@/components/Auth/SignUp.vue'
 
 export default {
   components: {

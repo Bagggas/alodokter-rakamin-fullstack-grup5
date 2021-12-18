@@ -28,12 +28,40 @@
                 </ul>
               </div>
           </form>
-          <router-link class="btn btn-outline-light m-2" to="/signup">Masuk</router-link>
+          <button class="btn btn-outline-light m-2" @click="showModal" >Masuk</button>
           <router-link class="btn btn-light m-2" to="/signup">Daftar Gratis</router-link>
         </div>
       </div>
     </nav>
+    <Login
+      v-show="isModalVisible"
+      @close="closeModal"
+    />
 </template>
+
+<script>
+  import Login from '@/components/Auth/Login.vue';
+
+  export default {
+    name: 'Navbar',
+    components: {
+      Login,
+    },
+    data() {
+      return {
+        isModalVisible: false,
+      };
+    },
+    methods: {
+      showModal() {
+        this.isModalVisible = true;
+      },
+      closeModal() {
+        this.isModalVisible = false;
+      }
+    }
+  };
+</script>
 
 <style scoped>
   .navbar-light .navbar-toggler{
