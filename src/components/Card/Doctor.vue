@@ -17,7 +17,7 @@
     <ul class="d-flex align-item-center" style="padding-left: 0px">
       <li class="d-flex" style="list-style: none;">
           <img class="icon-consult" src="/css/Alo Asset/cart-grey.png">
-          <p><small class="text-dark">Rp. {{ doctor.harga_konsul }}</small></p>
+          <p><small class="text-dark ms-3 mb-1">Rp. {{ doctor.harga_konsul }}</small></p>
       </li>
     </ul>
   </div>

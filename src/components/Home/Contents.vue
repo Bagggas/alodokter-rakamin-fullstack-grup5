@@ -1,30 +1,7 @@
 <template>
 <div>
-  <div class="container-fluid c-jumbotron">
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="/css/Alo Asset/Banner2.png" class="img-responsive d-block w-100 img-carousel" >
-        </div>
-        <div class="carousel-item">
-          <img src="/css/Alo Asset/Banner1.png" class="img-responsive d-block w-100 img-carousel" >
-        </div>
-        <div class="carousel-item">
-          <img src="/css/Alo Asset/Banner.png" class="img-responsive d-block w-100 img-carousel">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </div>
-  <div class="container mt-5 mb-5">    
-      <h2>Artikel terkini untuk anda</h2>
+  <div class="container mt-4 mb-5">    
+      <h1>Artikel terkini untuk anda</h1>
       <hr class="space">
       <div class="nav-scroller py-1 mb-2 jarak">
         <nav class="nav d-flex justify-content-between">

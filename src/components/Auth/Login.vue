@@ -1,15 +1,12 @@
 <template>
   <transition name="modal-fade">
     <div class="modal-backdrop">
-      <div class="modal-lg"
-        role="dialog"
-      >
-      <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="close"></button>
-      </div>
-
-        
-    <section
+      <div class="modal-lg" role="dialog">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="close"></button>
+        </div>
+  
+        <section
           class="modal-body d-flex justify-content-center m-2"
           id="modalDescription"
         >
@@ -47,7 +44,7 @@
                 </div>
                 <p>Pengguna baru?
                 <router-link class="fw-bold mt-3" @click="close" to="/signup" style="font-size: 14px;">
-                     Silahkan daftar gratis disini
+                    Silahkan daftar gratis disini
                 </router-link>
                 </p>
                 <small class="text-muted mt-3">Dengan masuk atau mendaftar, Anda menyetujui Syarat & Ketentuan serta Privasi ALODOKTER.</small>

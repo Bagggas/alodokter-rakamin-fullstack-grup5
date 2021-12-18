@@ -1,6 +1,5 @@
 <template>
-    <Navbar/>
-    <div class=" c-jumbotron">
+<div class=" c-jumbotron">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -23,15 +22,4 @@
       </button>
     </div>
   </div>
-  <router-view/>
 </template>
-
-<script>
-import Navbar from '@/components/layouts/Navbar.vue'
-export default {
-   components: {
-        Navbar
-      },
-
-}
-</script>

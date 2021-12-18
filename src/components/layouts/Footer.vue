@@ -24,18 +24,18 @@
         <h5>Get Started</h5>
         <ul>
           <li class="page-list">
-            <router-link class="px-2" to="/">
+            <router-link @click="scrollToTop()" class="px-2" to="/">
             <small>Artikel</small>
             </router-link>
           </li>
           <li class="page-list">
-            <router-link class="px-2" to="/"><small>Dokter</small></router-link>
+            <router-link  @click="scrollToTop()" class="px-2" to="/"><small>Dokter</small></router-link>
           </li>
           <li class="page-list">
-            <router-link class="px-2" to="/tentang-kami"><small>Tentang</small></router-link>
+            <router-link @click="scrollToTop()" class="px-2" to="/tentang-kami"><small>Tentang</small></router-link>
           </li>
           <li class="page-list">
-            <router-link class="px-2" to="/konsultasi"><small>Konsultasi</small></router-link>
+            <router-link @click="scrollToTop()" class="px-2" to="/konsultasi"><small>Konsultasi</small></router-link>
           </li>
         </ul>
       </div>
@@ -56,6 +56,9 @@
       <div class="col-md-4">
         <h5>Connect with Us</h5>
         <ul class="icon-list">
+          <li>
+            <router-link @click="scrollToTop()" to="/connect-with-us" >Our team</router-link>
+          </li>
           <li>
             <a href="https://github.com/Bagggas/alodokter-rakamin-fullstack-grup5" target="_blank"><small>Project Github</small></a>
           </li>
@@ -80,7 +83,12 @@
   export default {
     components: {
       Download,
-    }
+    },
+        methods: { 
+          scrollToTop() {
+              window.scrollTo(0,0);
+          }
+      }
   }
 </script>
 <style scoped>

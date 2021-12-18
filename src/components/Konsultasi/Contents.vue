@@ -1,5 +1,5 @@
 <template>
-<div class="container mt-5 mb-5">
+<div class="container mb-5">
   <div class="container px-4 py-5" id="hanging-icons">
     <h3 class="pb-1">Buat janji dengan cepat dan mudah</h3>
     <p class="fs-6 text-muted mb-5">Buat janji dengan ribuan dokter yang telah berpengalaman dan dari rumah sakit terbaik serta dapatkan kepastian jadwal booking.</p>
