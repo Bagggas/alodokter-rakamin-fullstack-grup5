@@ -35,21 +35,26 @@
     </nav>
     <Login
       v-show="isModalVisible"
-      @close="closeModal"
+    />
+    <ForgotPassword
+      v-show="isModal2Visible"
     />
 </template>
 
 <script>
   import Login from '@/components/Auth/Login.vue';
+import ForgotPassword from '@/components/Auth/ForgotPassword.vue';
 
   export default {
     name: 'Navbar',
     components: {
       Login,
+      ForgotPassword
     },
     data() {
       return {
         isModalVisible: false,
+        isModal2Visible: false,
       };
     },
     methods: {
@@ -58,6 +63,12 @@
       },
       closeModal() {
         this.isModalVisible = false;
+      },
+      showModal2() {
+        this.isModal2Visible = true;
+      },
+      closeModal2() {
+        this.isModal2Visible = false;
       }
     }
   };

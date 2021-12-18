@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="checkbox mb-3 text-start">
-                <small class="mt-3 mb-3">Forgot Password ?</small>
+                <small class="mt-3 mb-3" @click="close(); showModal();" type="submit">Forgot Password ?</small>
                 </div>
                 <button class="w-100 btn btn-lg btn-primary rounded-pill fs-5 mb-3" type="submit">Login</button>
                 <p class="fs-6 mb-3" @click="close" type="submit">Skip Login..</p>
@@ -63,12 +63,16 @@
 </template>
 
 <script>
+
   export default {
     name: 'Modal',
     methods: {
       close() {
-        this.$emit('close');
+        this.$parent.closeModal();
       },
+      showModal() {
+        this.$parent.showModal2();
+      }
     },
   };
 </script>
