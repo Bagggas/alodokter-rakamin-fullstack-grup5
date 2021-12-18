@@ -67,10 +67,11 @@ class BookingsController < ApplicationController
 
         render json: data, status: :ok
         
-        rescue ActiveRecord::RecordNotFound => e
-            render json: {
-              message: e
-            }, status: :not_found
+        if data.present?
+            render json: data, status: :ok
+        else
+            render json: {status:"Empty data"}, status: :not_found
+        end
     end
 
     def show
