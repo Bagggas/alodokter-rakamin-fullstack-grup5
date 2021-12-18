@@ -14,15 +14,15 @@
           id="modalDescription"
         >
           <main class="col-md-8 form-signin text-center">
-            <form>
+            <form v-on:submit.prevent>
                 <h4 class="mb-3 fw-bold">Forgot Password</h4>
                 <p class="fs-6 text-muted">Silahkan masukkan email akun anda yang telah terdaftar. Periksa pada inbox atau spam email anda untuk mendapatkan intruksi lanjut untuk merubah password.</p>
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><img src="/css/Alo Asset/mail-black.png" alt="mail icon" width="15"></span>
-                    <input type="email" class="form-control" id="floatingInput" placeholder="Your email">
+                    <input type="email" v-model="email" class="form-control" placeholder="Your email">
                 </div>
-                <button class="w-100 btn btn-lg btn-primary rounded-pill fs-5 mb-3" type="submit">Kirim Instruksi</button>
+                <button class="w-100 btn btn-lg btn-primary rounded-pill fs-5 mb-3" type="submit" @click="submitForm();">Kirim Instruksi</button>
             </form>
             </main>
         </section>
@@ -35,14 +35,67 @@
 </template>
 
 <script>
+
   export default {
-    name: 'Modal',
+    name: 'Forgot Password',
+    data() {
+      return {
+        postResult: null,
+        email: '',
+      }
+    },
     methods: {
       close() {
         this.$parent.closeModal2();
       },
-    },
-  };
+      fortmatResponse(res) {
+        return JSON.stringify(res, null, 2);
+      },
+
+      async submitForm() {
+        const postData = {
+          email: this.email,
+        };
+
+        try {
+          const res = await fetch(`https://janjidokter.herokuapp.com/password/forgot`, {
+            method: "post",
+            headers: {
+              "Content-Type": "application/json",
+              "x-access-token": "token-value",
+            },
+            body: JSON.stringify(postData),
+          });
+
+          if (!res.ok) {
+            console.log(res);
+            const message = `An error has occured: ${res.status} - ${res.statusText}`;
+            throw new Error(message);
+          }
+
+          const data = await res.json();
+
+          const result = {
+            status: res.status + "-" + res.statusText,
+            headers: {
+              "Content-Type": res.headers.get("Content-Type"),
+              "Content-Length": res.headers.get("Content-Length"),
+            },
+            data: data,
+          };
+
+          this.email = '';
+          this.postResult = this.fortmatResponse(result);
+        } catch (err) {
+          this.postResult = err.message;
+        }
+      },
+
+      clearPostOutput() {
+        this.postResult = null;
+      },
+    }
+  }
 </script>
 
 <style scoped>

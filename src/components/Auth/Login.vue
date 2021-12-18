@@ -65,7 +65,7 @@
 <script>
 
   export default {
-    name: 'Modal',
+    name: 'Login',
     methods: {
       close() {
         this.$parent.closeModal();
