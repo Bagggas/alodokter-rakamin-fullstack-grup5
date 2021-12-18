@@ -87,6 +87,7 @@ Doctor.create([
 
     Prof. DR. dr. Rini Sekartini, Sp.A (K) menempuh pendidikan Dokter Spesialis Anak di Universitas Indonesia. Selain itu, beliau juga terdaftar sebagai anggota dari Ikatan Dokter Indonesia (IDI) dan Ikatan Dokter Anak Indonesia (IDAI).',
     harga_konsul: 655000,
+    spesialis: 'Dokter Rambut',
     rating: 100,
     jumlah_pasien: 8,
     jumlah_pengalaman: 1,
@@ -104,6 +105,7 @@ Doctor.create([
 
     dr. Dimple Gobind Nagrani tergabung dnegan Ikatan Dokter Indonesia (IDI) dan Ikatan Dokter Anak Indonesia (IDAI). Adapun layanan yang dapat diberikan Beliau meliputi konsultasi kesehatan anak menyeluruh.',
     harga_konsul: 300000,
+    spesialis: 'Dokter THT',
     rating: 100,
     jumlah_pasien: 8,
     jumlah_pengalaman: 1,
