@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid">
+      <div class="container-fluid text-center">
         <a class="navbar-brand text-light" href="#" style="font-weight: bold; margin-left:20px">ALODOKTER</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -28,6 +28,8 @@
                 </ul>
               </div>
           </form>
+          <router-link class="btn btn-outline-light m-2" to="/signup">Masuk</router-link>
+          <router-link class="btn btn-light m-2" to="/signup">Daftar Gratis</router-link>
         </div>
       </div>
     </nav>

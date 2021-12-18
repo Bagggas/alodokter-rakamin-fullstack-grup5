@@ -27,6 +27,12 @@ const routes = [
     name: 'Artikel',
     component: () => import('../views/Detail.vue'),
     props: true
+  },
+  {
+    path: '/signup',
+    name: 'Daftar',
+    component: () => import('../views/SignUp.vue'),
+    props: true
   }
 ]
 
