@@ -5,7 +5,7 @@
                     <img :src="article.foto" height="200" :alt="article.judul" style="object-fit: cover;">
                     <div class="card-body">
                       <h5 class="card-title">{{ article.judul }}</h5>
-                      <p class="card-text">{{ article.konten }}</p>
+                      <p class="card-text">{{ article.konten.substring(0,100)+"..." }}</p>
                       <router-link :to="{ name: 'Artikel', params: { id: article.id }}" class="link">
                             <p>Baca Selengkapnya</p>
                       </router-link>

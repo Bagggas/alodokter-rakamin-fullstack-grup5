@@ -17,10 +17,12 @@
             <form v-on:submit.prevent>
                 <h4 class="mb-3 fw-bold">Forgot Password</h4>
                 <p class="fs-6 text-muted">Silahkan masukkan email akun anda yang telah terdaftar. Periksa pada inbox atau spam email anda untuk mendapatkan intruksi lanjut untuk merubah password.</p>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><img src="/css/Alo Asset/mail-black.png" alt="mail icon" width="15"></span>
-                    <input type="email" v-model="email" class="form-control" placeholder="Your email">
+                <div class="form-group mb-3">
+                  <div class="input-group">
+                      <span class="input-group-text" id="basic-addon1"><img src="/css/Alo Asset/mail-black.png" alt="mail icon" width="15"></span>
+                      <input type="email" v-model="email" class="form-control" placeholder="Your email">
+                  </div>
+                      <span class="text-danger fw-bold" style="font-size: 14px" v-if="errorMsg">{{ errorMsg }}</span>
                 </div>
                 <button class="w-100 btn btn-lg btn-primary rounded-pill fs-5 mb-3" type="submit" @click="submitForm();">
                         <div v-show="loading" class="spinner-border spinner-border-sm" role="status">
@@ -47,6 +49,7 @@
       return {
         postResult: null,
         email: '',
+        errorMsg: '',
         loading: false,
       }
     },
@@ -75,12 +78,16 @@
           });
 
           if (!res.ok) {
-            this.loading = false;
             const message = `An error has occured: ${res.status} - ${res.statusText}`;
+            const errorMsg = await res.json();
+            this.errorMsg = errorMsg['error'];
+            this.loading = false
+
             throw new Error(message);
           }
 
           const data = await res.json();
+          this.errorMsg = data['error']
 
           const result = {
             status: res.status + "-" + res.statusText,
