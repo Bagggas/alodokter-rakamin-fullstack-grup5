@@ -2,7 +2,7 @@
 <div class="col">
 <div class="card">
   <div class="card-header d-flex justify-content-between bg-light">
-    <img class="card-img-top" src="/css/Alo Asset/foto_dokter_copy-1.png" alt="Doctor" style="max-width: 65px"/>
+    <img class="card-img-top" :src="doctor.foto" alt="Doctor" style="max-width: 65px"/>
     <h5><span class="badge fw-light" style="color: #198754">{{ doctor.spesialis }}</span></h5>
   </div>
   <div class="card-body lh-1">
@@ -11,7 +11,7 @@
       <li class="m-2" style="list-style: none;"><small>{{ doctor.jumlah_pasien }} pasien</small></li>
       <li class="m-2"><small>{{ doctor.rumah_sakit }}, {{ doctor.lokasi }}</small></li>
     </ul>
-    <p class="fs-6 m-0 text-muted"><small>{{ doctor.about }}</small></p>
+    <p class="fs-6 m-0 text-muted"><small>{{ doctor.about.substring(0,63)+"..." }}</small></p>
   </div>
   <div class="card-footer">
     <ul class="d-flex align-item-center" style="padding-left: 0px">
