@@ -65,7 +65,7 @@ class BookingsController < ApplicationController
     def list
         data = Booking.where("pasien_id = #{@user.id}")
 
-        render json: data, status: :ok
+        # render json: data, status: :ok
         
         if data.present?
             render json: data, status: :ok
